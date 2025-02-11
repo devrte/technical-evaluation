@@ -1,0 +1,54 @@
+@page
+@model BibliotecaLocacao.Areas.Identity.Pages.Account.LoginModel
+@{
+    ViewData["Title"] = "Login";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div class="row">
+    <div class="col-md-4">
+        <section>
+            <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                <h4>Use uma conta local para entrar.</h4>
+                <hr />
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Input.Email"></label>
+                    <input asp-for="Input.Email" class="form-control" />
+                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Input.Password"></label>
+                    <input asp-for="Input.Password" class="form-control" />
+                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <div class="checkbox">
+                        <label>
+                            <input asp-for="Input.RememberMe" />
+                            @Html.DisplayNameFor(m => m.Input.RememberMe)
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Login</button>
+                </div>
+            </form>
+        </section>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <section>
+            <h4>Use um serviço externo para entrar.</h4>
+            <hr />
+            @foreach (var provider in Model.ExternalLogins)
+            {
+                <form asp-page="./ExternalLogin" asp-route-provider="@(provider.Name)" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="d-inline">
+                    <button type="submit" class="btn btn-primary">@provider.DisplayName</button>
+                </form>
+            }
+        </section>
+    </div>
+</div>
