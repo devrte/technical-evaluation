@@ -1,0 +1,62 @@
+@model IEnumerable<BibliotecaLocacao.Models.Locacao>
+
+@{
+    ViewData["Title"] = "Locações";
+}
+
+<h1>Locações</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Registrar Nova Locação</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Livro.Titulo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Usuario.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataRetirada)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataDevolucaoPrevista)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataDevolucaoReal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Multa)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Livro.Titulo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Usuario.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataRetirada)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataDevolucaoPrevista)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataDevolucaoReal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Multa)
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+               

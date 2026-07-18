@@ -1,0 +1,69 @@
+@page
+@model BibliotecaLocacao.Areas.Identity.Pages.Account.RegisterModel
+@{
+    ViewData["Title"] = "Registrar";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div class="row">
+    <div class="col-md-4">
+        <section>
+            <form method="post">
+                <h4>Crie uma nova conta.</h4>
+                <hr />
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Input.Nome"></label>
+                    <input asp-for="Input.Nome" class="form-control" />
+                    <span asp-validation-for="Input.Nome" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Input.Email"></label>
+                    <input asp-for="Input.Email" class="form-control" />
+                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Input.Telefone"></label>
+                    <input asp-for="Input.Telefone" class="form-control" />
+                    <span asp-validation-for="Input.Telefone" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Input.Password"></label>
+                    <input asp-for="Input.Password" class="form-control" type="password" />
+                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Input.ConfirmPassword"></label>
+                    <input asp-for="Input.ConfirmPassword" class="form-control" type="password" />
+                    <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Input.TipoPerfil"></label>
+                    <select asp-for="Input.TipoPerfil" class="form-control">
+                        <option value="Administrador">Administrador</option>
+                        <option value="Usuario">Usuário</option>
+                    </select>
+                    <span asp-validation-for="Input.TipoPerfil" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Registrar</button>
+                </div>
+            </form>
+        </section>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <section>
+            <h4>Use um serviço externo para registrar.</h4>
+            <hr />
+            @foreach (var provider in Model.ExternalLogins)
+            {
+                <form asp-page="./ExternalLogin" asp-route-provider="@(provider.Name)" method="post" class="d-inline">
+                    <button type="submit" class="btn btn-primary">@provider.DisplayName</button>
+                </form>
+            }
+        </section>
+    </div>
+</div>

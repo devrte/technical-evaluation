@@ -1,0 +1,53 @@
+@model BibliotecaLocacao.Models.Locacao
+
+@{
+    ViewData["Title"] = "Registrar Devolução";
+}
+
+<h1>Registrar Devolução</h1>
+
+<h4>Locação</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Devolucao">
+            <div class="form-group">
+                <label asp-for="Livro.Titulo" class="control-label">Livro</label>
+                <input asp-for="Livro.Titulo" class="form-control" readonly />
+                <span asp-validation-for="Livro.Titulo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Usuario.Nome" class="control-label">Usuário</label>
+                <input asp-for="Usuario.Nome" class="form-control" readonly />
+                <span asp-validation-for="Usuario.Nome" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DataRetirada" class="control-label">Data de Retirada</label>
+                <input asp-for="DataRetirada" class="form-control" readonly />
+                <span asp-validation-for="DataRetirada" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DataDevolucaoPrevista" class="control-label">Data de Devolução Prevista</label>
+                <input asp-for="DataDevolucaoPrevista" class="form-control" readonly />
+                <span asp-validation-for="DataDevolucaoPrevista" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DataDevolucaoReal" class="control-label">Data de Devolução Real</label>
+                <input asp-for="DataDevolucaoReal" class="form-control" value="@DateTime.Now" readonly />
+                <span asp-validation-for="DataDevolucaoReal" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Multa" class="control-label">Multa</label>
+                <input asp-for="Multa" class="form-control" value="@Model.Multa" readonly />
+                <span asp-validation-for="Multa" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Registrar Devolução" class="btn btn-success" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index" class="btn btn-secondary">Voltar</a>
+</div>
